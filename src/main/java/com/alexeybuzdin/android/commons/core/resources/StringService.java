@@ -22,4 +22,15 @@ public class StringService {
         Resources resources = context.getResources();
         return resources.getString(photo);
     }
+
+    public String[] loadStringArray(String name) {
+        Resources resources = context.getResources();
+        int id = resources.getIdentifier(name, "array", context.getPackageName());
+        return resources.getStringArray(id);
+    }
+
+    public String[] loadStringArray(int id) {
+        Resources resources = context.getResources();
+        return resources.getStringArray(id);
+    }
 }
