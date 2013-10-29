@@ -1,44 +1,37 @@
 package com.alexeybuzdin.android.commons.core.resources;
 
-import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import com.alexeybuzdin.android.commons.core.AndroidService;
 
-public class StringService {
+public class StringService extends AndroidService {
 
-    Context context;
-
-    public StringService(Context context) {
-        this.context = context;
-    }
-
-    public String loadString(String photo) {
-        Resources resources = context.getResources();
-        int id = resources.getIdentifier(photo, "string", context.getPackageName());
+    public String loadString(String name) {
+        Resources resources = getContext().getResources();
+        int id = resources.getIdentifier(name, "string", getContext().getPackageName());
         return resources.getString(id);
     }
 
-    public String loadString(int photo) {
-        Resources resources = context.getResources();
-        return resources.getString(photo);
+    public String loadString(int id) {
+        Resources resources = getContext().getResources();
+        return resources.getString(id);
     }
 
     public String[] loadStringArray(String name) {
-        Resources resources = context.getResources();
-        int id = resources.getIdentifier(name, "array", context.getPackageName());
+        Resources resources = getContext().getResources();
+        int id = resources.getIdentifier(name, "array", getContext().getPackageName());
         return resources.getStringArray(id);
     }
 
     public String[] loadStringArray(int id) {
-        Resources resources = context.getResources();
+        Resources resources = getContext().getResources();
         return resources.getStringArray(id);
     }
 
-    public String loadStringArrayItem(int id, int index) {        
+    public String loadStringArrayItem(int id, int index) {
         return loadStringArray(id)[index];
     }
-    
-    public String loadStringArrayItem(String name, int index) {        
+
+    public String loadStringArrayItem(String name, int index) {
         return loadStringArray(name)[index];
     }
 }
