@@ -3,17 +3,21 @@ package com.alexeybuzdin.android.commons.core.resources;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import com.alexeybuzdin.android.commons.core.AndroidService;
 import com.alexeybuzdin.android.commons.core.ClassLogger;
 
-public class NetworkService extends AndroidService {
+import javax.inject.Inject;
+
+public class NetworkService {
 
     ClassLogger logger = new ClassLogger(NetworkService.class);
+
+    @Inject
+    public Context context;
 
     public boolean internetAvailable()
     {
         NetworkInfo info = ((ConnectivityManager)
-                getContext().getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+                context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
 
         if (info == null) {
             logger.d("no internet connection");
@@ -29,3 +33,4 @@ public class NetworkService extends AndroidService {
         }
     }
 }
+
