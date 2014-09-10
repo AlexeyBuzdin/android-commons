@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class ViewHolder {
 
-    private Map<Integer, View> holder = new HashMap<Integer, View>();
+    private SparseArray<View> holder = new SparseArray<View>();
 
     public <T extends View> T get(Integer id) {
         return (T) holder.get(id);
